@@ -10,9 +10,16 @@ const api = require('./api');
 
 const app = express();
 
+const usersRouter = require('../users/users-router.js')
+
+
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
+app.use(express.json())
+
+
+app.use('/users', usersRouter)
 
 app.get('/', (req, res) => {
   res.json({

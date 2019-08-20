@@ -50,7 +50,8 @@ To get the server running locally:
 | POST   | `/users/register/owner` | none                | Creates a new user as owner of a new organization. |
 | PUT    | `/users/:userId`        | owners, supervisors |                                                    |
 | DELETE | `/users/:userId`        | owners, supervisors |                                                    |
-
+| POST   | `/users/register` | none                | Creates a new user
+| POST   | `/users/login` | none                | login a user
 # Data Model
 
 🚫This is just an example. Replace this with your data model

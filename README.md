@@ -32,62 +32,79 @@ To get the server running locally:
 
 🚫This is a placeholder, replace the endpoints, access controll, and descriptioin to match your project
 
-#### Organization Routes
-
-| Method | Endpoint                | Access Control | Description                                  |
-| ------ | ----------------------- | -------------- | -------------------------------------------- |
-| GET    | `/organizations/:orgId` | all users      | Returns the information for an organization. |
-| PUT    | `/organizatoins/:orgId` | owners         | Modify an existing organization.             |
-| DELETE | `/organizations/:orgId` | owners         | Delete an organization.                      |
-
 #### User Routes
 
-| Method | Endpoint                | Access Control      | Description                                        |
-| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
-| GET    | `/users/current`        | all users           | Returns info for the logged in user.               |
-| GET    | `/users/org/:userId`    | owners, supervisors | Returns all users for an organization.             |
-| GET    | `/users/:userId`        | owners, supervisors | Returns info for a single user.                    |
-| POST   | `/users/register/owner` | none                | Creates a new user as owner of a new organization. |
-| PUT    | `/users/:userId`        | owners, supervisors |                                                    |
-| DELETE | `/users/:userId`        | owners, supervisors |                                                    |
-| POST   | `/users/register` | none                | Creates a new user
-| POST   | `/users/login` | none                | login a user
+| Method | Endpoint          | Access Control | Description        |
+| ------ | ----------------- | -------------- | ------------------ |
+| POST   | `/users/register` | none           | Creates a new user |
+| POST   | `/users/login`    | none           | login a user       |
+
 # Data Model
-
-🚫This is just an example. Replace this with your data model
-
-#### 2️⃣ ORGANIZATIONS
-
----
-
-```
-{
-  id: UUID
-  name: STRING
-  industry: STRING
-  paid: BOOLEAN
-  customer_id: STRING
-  subscription_id: STRING
-}
-```
 
 #### USERS
 
 ---
 
+## Register
+
+---
+
+Method: **POST** `/users/register`
+
+### Example Registration Post Object
+
 ```
 {
-  id: UUID
-  organization_id: UUID foreign key in ORGANIZATIONS table
-  first_name: STRING
-  last_name: STRING
-  role: STRING [ 'owner', 'supervisor', 'employee' ]
-  email: STRING
-  phone: STRING
-  cal_visit: BOOLEAN
-  emp_visit: BOOLEAN
-  emailpref: BOOLEAN
-  phonepref: BOOLEAN
+  username: "johndoe", // STRING (REQUIRED)
+  first_name: "John", // STRING (REQUIRED)
+  last_name: "Doe", // STRING (REQUIRED)
+  password: "password123", // STRING (REQUIRED)
+  vehicle_class: "A" // STRING
+}
+```
+
+### Example Response Object
+
+```
+{
+    "id": 15,
+    "username": "johndoe",
+    "first_name": "John",
+    "last_name": "Doe",
+    "password": "$2a$10$LcpLLo6nOtYlmk74snOYs.yby2Oyd72ecKHKWS2ATyXPFws1/L2T.",
+    "vehicle_class": "A"
+}
+```
+
+## Login
+
+---
+
+Method: **POST** `/users/login`
+
+### Example Registration Post Object
+
+```
+{
+	"username": "johndoe",
+	"password": "password123"
+}
+```
+
+### Example Response Object
+
+```
+{
+    "message": "Welcome johndoe!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoyLCJ1c2VybmFtZSI6InNhbXdpc2UyMDE5IiwiZmlyc3RfbmFtZSI6IlNhbSIsImlhdCI6MTU2NjQzMTcyOSwiZXhwIjoxNTY2NDM1MzI5fQ.3KCnLTC3e18uTGw79ayMD3vMUfSIoRuAm_2s00HpOfE",
+    "user": {
+        "id": 15,
+        "username": "johndoe",
+        "first_name": "John",
+        "last_name": "Doe",
+        "password": "$2a$10$WM3qM/JljD.lAcLcNYg1TOTyoPDD/Nyt5gbBXpTSnq7PYtp9suMse",
+        "vehicle_class": "A"
+    }
 }
 ```
 
@@ -124,10 +141,10 @@ In order for the app to function correctly, the user must set up their own envir
 create a .env file that includes the following:
 
 🚫 These are just examples, replace them with the specifics for your app
-  
- _ STAGING_DB - optional development db for using functionality not available in SQLite
-_ NODE_ENV - set to "development" until ready for "production"
-_ JWT_SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;_(-_=+)') for i in range(50)])
+
+_ STAGING_DB - optional development db for using functionality not available in SQLite
+_ NODE*ENV - set to "development" until ready for "production"
+* JWT*SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-_=+)') for i in range(50)])
 _ SENDGRID_API_KEY - this is generated in your Sendgrid account \* stripe_secret - this is generated in the Stripe dashboard
 
 ## Contributing

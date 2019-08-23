@@ -55,11 +55,11 @@ Method: **POST** `/users/register`
 
 ```
 {
-  username: "johndoe", // STRING (REQUIRED)
-  first_name: "John", // STRING (REQUIRED)
-  last_name: "Doe", // STRING (REQUIRED)
+  username: "sammyw", // STRING (REQUIRED)
+  first_name: "samwise", // STRING (REQUIRED)
+  last_name: "gamgi", // STRING (REQUIRED)
   password: "password123", // STRING (REQUIRED)
-  vehicle_class: "A" // STRING
+  email: "sample@email.com" // STRING
 }
 ```
 
@@ -67,12 +67,14 @@ Method: **POST** `/users/register`
 
 ```
 {
-    "id": 15,
-    "username": "johndoe",
-    "first_name": "John",
-    "last_name": "Doe",
-    "password": "$2a$10$LcpLLo6nOtYlmk74snOYs.yby2Oyd72ecKHKWS2ATyXPFws1/L2T.",
-    "vehicle_class": "A"
+    "id": 1,
+    "username": "sammyw",
+    "first_name": "samwise",
+    "last_name": "gamgi",
+    "password": "$2a$10$6E9J96q2S0dou8MSAwa56uQNfUfVgYehZRWq03keQNjZaKJ12h3mS",
+    "email": "sample@email.com",
+    "created_at": "2019-08-23 06:12:29",
+    "updated_at": "2019-08-23 06:12:29"
 }
 ```
 
@@ -86,7 +88,7 @@ Method: **POST** `/users/login`
 
 ```
 {
-	"username": "johndoe",
+	"username": "sammyw",
 	"password": "password123"
 }
 ```
@@ -95,15 +97,17 @@ Method: **POST** `/users/login`
 
 ```
 {
-    "message": "Welcome johndoe!",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoyLCJ1c2VybmFtZSI6InNhbXdpc2UyMDE5IiwiZmlyc3RfbmFtZSI6IlNhbSIsImlhdCI6MTU2NjQzMTcyOSwiZXhwIjoxNTY2NDM1MzI5fQ.3KCnLTC3e18uTGw79ayMD3vMUfSIoRuAm_2s00HpOfE",
+    "message": "Welcome sammyw!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6InNhbW15dyIsImZpcnN0X25hbWUiOiJzYW13aXNlIiwiaWF0IjoxNTY2NTQwNzgwLCJleHAiOjE1NjY1NDQzODB9.GgcH5xG8aY_fa67H_BsqFmVh4FgPqLCKKDWm5V9bgBo",
     "user": {
-        "id": 15,
-        "username": "johndoe",
-        "first_name": "John",
-        "last_name": "Doe",
-        "password": "$2a$10$WM3qM/JljD.lAcLcNYg1TOTyoPDD/Nyt5gbBXpTSnq7PYtp9suMse",
-        "vehicle_class": "A"
+        "id": 1,
+        "username": "sammyw",
+        "first_name": "samwise",
+        "last_name": "gamgi",
+        "password": "$2a$10$6E9J96q2S0dou8MSAwa56uQNfUfVgYehZRWq03keQNjZaKJ12h3mS",
+        "email": "sample@email.com",
+        "created_at": "2019-08-23 06:12:29",
+        "updated_at": "2019-08-23 06:12:29"
     }
 }
 ```
@@ -143,9 +147,10 @@ create a .env file that includes the following:
 🚫 These are just examples, replace them with the specifics for your app
 
 _ STAGING_DB - optional development db for using functionality not available in SQLite
-_ NODE*ENV - set to "development" until ready for "production"
-* JWT*SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-_=+)') for i in range(50)])
-_ SENDGRID_API_KEY - this is generated in your Sendgrid account \* stripe_secret - this is generated in the Stripe dashboard
+_ NODE\*ENV - set to "development" until ready for "production"
+
+- JWT*SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-_=+)') for i in range(50)])
+  _ SENDGRID_API_KEY - this is generated in your Sendgrid account \* stripe_secret - this is generated in the Stripe dashboard
 
 ## Contributing
 

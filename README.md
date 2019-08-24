@@ -317,9 +317,9 @@ Method: **DEL** `/vehicle/:id`
 
 `findUsersVehicles(user_id)` -> Returns a list of a users vehicles
 
-`updateVehicle(user_id)` -> Updates a users vehicle
+`updateVehicle(user_id)` -> Updates a users vehicle, returning number of updated entries
 
-`deleteVehicle(user_id)` -> Deletes a users vehicle
+`deleteVehicle(user_id)` -> Deletes a users vehicle, returning number of deleted entries
 
 ## 3️⃣ Environment Variables
 

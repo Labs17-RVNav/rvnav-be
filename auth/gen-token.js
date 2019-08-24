@@ -1,15 +1,37 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
-module.exports = function generateToken(user) {
+module.exports = {
+  generateToken: function(user) {
     const jwtPayload = {
       subject: user.id,
       username: user.username,
       first_name: user.first_name
-    }
-    const jwtSecret = require('./secret.js').jwtSecret
-    console.log(jwtSecret)
+    };
+    const jwtSecret = require('./secret.js').jwtSecret;
     const jwtOptions = {
-      expiresIn: "1h"
+      expiresIn: '7d'
+    };
+    return jwt.sign(jwtPayload, jwtSecret, jwtOptions);
+  },
+
+  protected: function(req, res, next) {
+    const token = req.headers.authorization;
+
+    if (token) {
+      jwt.verify(
+        token,
+        require('./secret.js').jwtSecret,
+        (err, decodedToken) => {
+          if (err) {
+            res.status(401).json({ message: 'invalid token' });
+          } else {
+            req.decodedToken = decodedToken;
+            next();
+          }
+        }
+      );
+    } else {
+      res.status(401).json({ message: 'no token provided' });
     }
-    return jwt.sign(jwtPayload, jwtSecret, jwtOptions)
   }
+};

@@ -32,14 +32,14 @@ To get the server running locally:
 
 🚫This is a placeholder, replace the endpoints, access controll, and descriptioin to match your project
 
+# UserRoutes
+
 #### User Routes
 
 | Method | Endpoint          | Access Control | Description        |
 | ------ | ----------------- | -------------- | ------------------ |
 | POST   | `/users/register` | none           | Creates a new user |
 | POST   | `/users/login`    | none           | login a user       |
-
-# Data Model
 
 #### USERS
 
@@ -112,31 +112,214 @@ Method: **POST** `/users/login`
 }
 ```
 
+# VehicleRoutes
+
+#### Vehicle Routes
+
+| Method | Endpoint       | Access Control | Description           |
+| ------ | -------------- | -------------- | --------------------- |
+| POST   | `/vehicle`     | JWT            | Creates a new vehicle |
+| GET    | `/vehicle`     | JWT            | get vehicle list      |
+| GET    | `/vehicle/:id` | JWT            | get specified vehicle |
+| PUT    | `/vehicle/:id` | JWT            | update vehicle        |
+| DEL    | `/vehicle/:id` | JWT            | delete vehicle        |
+
+#### Vehicles
+
+---
+
+## Create Vehicle
+
+---
+
+Method: **POST** `/vehicle`
+
+### Example Vehicle Creation Post Object
+
+```
+{
+	"height": 12.3, // FLOAT
+	"weight": 12000.3, // FLOAT
+	"width": 10.3, // FLOAT
+	"length": 42.3, // FLOAT
+	"axel_count": 2, // INTEGER
+	"class": "A", // STRING
+	"dual_tires": true, // BOOLEAN
+	"trailer": false //BOOLEAN
+}
+```
+
+### Example Response Object
+
+```
+{
+    "id": 14,
+    "user_id": 2,
+    "height": 12.3,
+    "width": 10.3,
+    "length": 42.3,
+    "weight": 12000.3,
+    "axel_count": 2,
+    "class": "A",
+    "created_at": "2019-08-24 02:24:38",
+    "updated_at": "2019-08-24 02:24:38",
+    "dual_tires": 1,
+    "trailer": 0
+}
+```
+
+## Retrieve Vehicles List
+
+---
+
+Method: **GET** `/vehicle`
+
+### Example Response Object
+
+```
+[
+    {
+        "id": 14,
+        "user_id": 2,
+        "height": 14.3,
+        "width": 12.3,
+        "length": 42.3,
+        "weight": 12000.3,
+        "axel_count": 2,
+        "class": "A",
+        "created_at": "2019-08-24 02:24:38",
+        "updated_at": "2019-08-24 02:24:38",
+        "dual_tires": 1,
+        "trailer": 0
+    },
+    {
+        "id": 15,
+        "user_id": 2,
+        "height": 10.3,
+        "width": 10.3,
+        "length": 30.3,
+        "weight": 8000.3,
+        "axel_count": 1,
+        "class": "C",
+        "created_at": "2019-08-24 02:55:01",
+        "updated_at": "2019-08-24 02:55:01",
+        "dual_tires": 0,
+        "trailer": 1
+    }
+]
+```
+
+## Retrieve Single Vehicle
+
+---
+
+Method: **GET** `/vehicle/:id`
+
+### Example Response Object
+
+```
+{
+    "id": 14,
+    "user_id": 2,
+    "height": 14.3,
+    "width": 12.3,
+    "length": 42.3,
+    "weight": 12000.3,
+    "axel_count": 2,
+    "class": "A",
+    "created_at": "2019-08-24 02:24:38",
+    "updated_at": "2019-08-24 02:24:38",
+    "dual_tires": 1,
+    "trailer": 0
+}
+```
+
+### Example Error Response Object
+
+```
+{
+    "message": "No vehicle by that id"
+}
+```
+
+## Update Single Vehicle
+
+---
+
+Method: **PUT** `/vehicle/:id`
+
+### Example Put Object **_note that you can update 1 or multiple fields_**
+
+```
+{
+	"height": 14.3,
+	"width": 12.3
+}
+```
+
+### Example Response Object
+
+```
+1 // the count of updated objects
+```
+
+### Example Error Response Object
+
+```
+{
+    "message": "No vehicle by that id"
+}
+```
+
+## Delete Vehicle
+
+---
+
+Method: **DEL** `/vehicle/:id`
+
+### Example Response Object
+
+```
+1 // count of deleted vehicles
+```
+
+### Example Error Response Object
+
+```
+{
+    "message": "No vehicle by that id"
+}
+```
+
 ## 2️⃣ Actions
 
-🚫 This is an example, replace this with the actions that pertain to your backend
+### Users Helpers
 
-`getOrgs()` -> Returns all organizations
+`add()` -> Creates a new user
 
-`getOrg(orgId)` -> Returns a single organization by ID
+`findById(id)` -> Returns a user by ID
 
-`addOrg(org)` -> Returns the created org
+`findBy(filter)` -> Returns a user by a particular filter
 
-`updateOrg(orgId)` -> Update an organization by ID
+`findUsers(orgId)` -> Returns a list of users
 
-`deleteOrg(orgId)` -> Delete an organization by ID
 <br>
 <br>
 <br>
-`getUsers(orgId)` -> if no param all users
 
-`getUser(userId)` -> Returns a single user by user ID
+### Vehilces Helpers
 
-`addUser(user object)` --> Creates a new user and returns that user. Also creates 7 availabilities defaulted to hours of operation for their organization.
+`add()` -> Creates a new users vehicle
 
-`updateUser(userId, changes object)` -> Updates a single user by ID.
+`findById(id)` -> Returns a users vehicle by ID
 
-`deleteUser(userId)` -> deletes everything dependent on the user
+`findBy(filter)` -> Returns a users vehicle by a particular filter
+
+`findUsersVehicles(user_id)` -> Returns a list of a users vehicles
+
+`updateVehicle(user_id)` -> Updates a users vehicle, returning number of updated entries
+
+`deleteVehicle(user_id)` -> Deletes a users vehicle, returning number of deleted entries
 
 ## 3️⃣ Environment Variables
 

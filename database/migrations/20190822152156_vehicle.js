@@ -14,7 +14,7 @@ exports.up = function(knex) {
     tbl.float('length');
     tbl.float('weight');
     tbl.integer('axel_count');
-    tbl.string('class', 255);
+    tbl.string('vehicle_class', 255);
     tbl.timestamps(true, true);
     tbl.boolean('dual_tires');
     tbl.boolean('trailer');

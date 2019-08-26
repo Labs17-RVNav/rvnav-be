@@ -143,7 +143,7 @@ Method: **POST** `/vehicle`
 	"width": 10.3, // FLOAT
 	"length": 42.3, // FLOAT
 	"axel_count": 2, // INTEGER
-	"class": "A", // STRING
+	"vehicle_class": "A", // STRING
 	"dual_tires": true, // BOOLEAN
 	"trailer": false //BOOLEAN
 }
@@ -160,7 +160,7 @@ Method: **POST** `/vehicle`
     "length": 42.3,
     "weight": 12000.3,
     "axel_count": 2,
-    "class": "A",
+    "vehicle_class": "A",
     "created_at": "2019-08-24 02:24:38",
     "updated_at": "2019-08-24 02:24:38",
     "dual_tires": 1,

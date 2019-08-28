@@ -132,12 +132,13 @@ Method: **POST** `/users/login`
 
 ---
 
-Method: **POST** `/vehicle`
+Method: **POST** `/vehicle` (Protected)
 
 ### Example Vehicle Creation Post Object
 
 ```
 {
+    "name": "The Hot Rod", // STRING (REQUIRED)
 	"height": 12.3, // FLOAT
 	"weight": 12000.3, // FLOAT
 	"width": 10.3, // FLOAT
@@ -155,6 +156,7 @@ Method: **POST** `/vehicle`
 {
     "id": 14,
     "user_id": 2,
+    "name": "The Hot Rod",
     "height": 12.3,
     "width": 10.3,
     "length": 42.3,
@@ -172,7 +174,7 @@ Method: **POST** `/vehicle`
 
 ---
 
-Method: **GET** `/vehicle`
+Method: **GET** `/vehicle` (Protected)
 
 ### Example Response Object
 
@@ -213,7 +215,7 @@ Method: **GET** `/vehicle`
 
 ---
 
-Method: **GET** `/vehicle/:id`
+Method: **GET** `/vehicle/:id` (Protected)
 
 ### Example Response Object
 
@@ -246,7 +248,7 @@ Method: **GET** `/vehicle/:id`
 
 ---
 
-Method: **PUT** `/vehicle/:id`
+Method: **PUT** `/vehicle/:id` (Protected)
 
 ### Example Put Object **_note that you can update 1 or multiple fields_**
 
@@ -275,7 +277,7 @@ Method: **PUT** `/vehicle/:id`
 
 ---
 
-Method: **DEL** `/vehicle/:id`
+Method: **DEL** `/vehicle/:id` (Protected)
 
 ### Example Response Object
 

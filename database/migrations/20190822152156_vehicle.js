@@ -9,6 +9,7 @@ exports.up = function(knex) {
       .inTable('users')
       .onUpdate('CASCADE')
       .onDelete('CASCADE');
+    tbl.string('name').notNullable();
     tbl.float('height');
     tbl.float('width');
     tbl.float('length');

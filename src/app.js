@@ -24,16 +24,16 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-// ROUTER ENDPOINTS
-app.use('/users', usersRouter);
-app.use('/vehicle', vehicleRouter);
-
 // SANITY CHECK ENDPOINT
 app.get('/', (req, res) => {
   res.json({
-    message: '👋🌎🌍🌏'
+    message: 'Hello World'
   });
 });
+
+// ROUTER ENDPOINTS
+app.use('/users', usersRouter);
+app.use('/vehicle', vehicleRouter);
 
 //sentry.io
 // The error handler must be before any other error middleware and after all controllers

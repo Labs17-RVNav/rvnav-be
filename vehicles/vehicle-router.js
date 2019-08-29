@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const Vehicle = require('./vehicle-model');
-const protected = require('../auth/gen-token.js').protected;
+const protectedRoute = require('../auth/gen-token.js').protectedRoute;
 
 // ADD A vehicle
-router.post('/', protected, (req, res) => {
+router.post('/', protectedRoute, (req, res) => {
   const { subject } = req.decodedToken;
   if (!subject) {
     res.status(400).json({
@@ -17,7 +17,7 @@ router.post('/', protected, (req, res) => {
 });
 
 // GET VEHICLE
-router.get('/', protected, (req, res) => {
+router.get('/', protectedRoute, (req, res) => {
   const { subject } = req.decodedToken;
   Vehicle.findUsersVehicles(subject).then(vehicles => {
     res.json(vehicles);
@@ -25,7 +25,7 @@ router.get('/', protected, (req, res) => {
 });
 
 // GET SINGLE vehicle
-router.get('/:id', protected, (req, res) => {
+router.get('/:id', protectedRoute, (req, res) => {
   const { id } = req.params;
   const { subject } = req.decodedToken;
   Vehicle.findById(id)
@@ -40,7 +40,7 @@ router.get('/:id', protected, (req, res) => {
 });
 
 // Update vehicle
-router.put('/:id', protected, (req, res) => {
+router.put('/:id', protectedRoute, (req, res) => {
   const changedVehicle = req.body;
   const { id } = req.params;
   const { subject } = req.decodedToken;
@@ -58,7 +58,7 @@ router.put('/:id', protected, (req, res) => {
 });
 
 // Delete vehicle
-router.delete('/:id', protected, (req, res) => {
+router.delete('/:id', protectedRoute, (req, res) => {
   const { id } = req.params;
   const { subject } = req.decodedToken;
   Vehicle.findById(id)

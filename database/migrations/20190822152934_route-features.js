@@ -6,6 +6,7 @@ exports.up = function(knex) {
     tbl.string('road_feature', 255);
     tbl.string('route_name', 255);
     tbl.text('description');
+    tbl.timestamps(true, true);
   });
 };
 

@@ -21,7 +21,7 @@ const vehicleRouter = require('../vehicles/vehicle-router.js');
 app.use(Sentry.Handlers.requestHandler());
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors({ origin: "http://localhost:3000"}));
+app.use(cors({ origin: "http://localhost:3000" || "https://www.rvnav.com"}));
 app.use(express.json());
 
 // SANITY CHECK ENDPOINT

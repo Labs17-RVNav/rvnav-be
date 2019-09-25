@@ -17,12 +17,26 @@ Sentry.init({
 const usersRouter = require('../users/users-router.js');
 const vehicleRouter = require('../vehicles/vehicle-router.js');
 
+let whiteList = ["https://www.rvnav.com", "http://localhost:3000"]
+let corsOptions = {
+  origin: function (origin, callback) {
+    if (whiteList.indexOf(origin) !== -1) {
+    callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+  }
+}}
+
 // This request handler must be the first middleware on the app
 app.use(Sentry.Handlers.requestHandler());
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
+
+
+// Enables cors preflight across the board
+app.options("*", cors())
 
 // SANITY CHECK ENDPOINT
 app.get('/', (req, res) => {

@@ -319,7 +319,7 @@ In order for the app to function correctly, the user must set up their own envir
 
 create a .env file that includes the following:
 
-- JWT*SECRET *SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-*=+)') for i in range(50)])
+- JWT_SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-*=+)') for i in range(50)])
 
 ## Contributing
 

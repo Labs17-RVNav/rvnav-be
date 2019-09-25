@@ -283,7 +283,7 @@ Method: **DEL** `/vehicle/:id` (Protected)
 }
 ```
 
-## 2️⃣ Actions
+## Actions
 
 ### Users Helpers
 

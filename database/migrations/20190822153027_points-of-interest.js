@@ -7,6 +7,7 @@ exports.up = function(knex) {
     tbl.string('feature', 255);
     tbl.string('type', 255);
     tbl.text('description');
+    tbl.timestamps(true, true);
   });
 };
 

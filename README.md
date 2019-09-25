@@ -1,36 +1,26 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 # API Documentation
 
-#### 1️⃣ Backend delpoyed at [🚫name service here](🚫add URL here) <br>
+#### Backend deployed at [Heroku](https://labs15rvlife.herokuapp.com/) <br>
 
-## 1️⃣ Getting started
+## Getting started
 
 To get the server running locally:
-
-🚫 adjust these scripts to match your project
 
 - Clone this repo
 - **yarn install** to install all required dependencies
 - **yarn dev** to start the local server
 - **yarn test** to start server using testing environment
 
-### Backend framework goes here
+### Backend framework Node with Express
 
-🚫 Why did you choose this framework?
+- Utilizing bcrypt for hashing passwords
+- Utilizing cors for dev and production cross origin compliance
+- Utilizing dotenv to access our environment variables
+- Utilizing jest and supertest for testing
+- Utilizing Jsonwebtokens for authentication
+- Utilizing postgresql for the DB
 
-- Point One
-- Point Two
-- Point Three
-- Point Four
-
-## 2️⃣ Endpoints
-
-🚫This is a placeholder, replace the endpoints, access controll, and descriptioin to match your project
+## Endpoints
 
 # UserRoutes
 
@@ -309,7 +299,7 @@ Method: **DEL** `/vehicle/:id` (Protected)
 <br>
 <br>
 
-### Vehilces Helpers
+### Vehicles Helpers
 
 `add()` -> Creates a new users vehicle
 
@@ -323,19 +313,13 @@ Method: **DEL** `/vehicle/:id` (Protected)
 
 `deleteVehicle(user_id)` -> Deletes a users vehicle, returning number of deleted entries
 
-## 3️⃣ Environment Variables
+## Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables.
 
 create a .env file that includes the following:
 
-🚫 These are just examples, replace them with the specifics for your app
-
-_ STAGING_DB - optional development db for using functionality not available in SQLite
-_ NODE\*ENV - set to "development" until ready for "production"
-
-- JWT*SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-_=+)') for i in range(50)])
-  _ SENDGRID_API_KEY - this is generated in your Sendgrid account \* stripe_secret - this is generated in the Stripe dashboard
+- JWT*SECRET *SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;*(-*=+)') for i in range(50)])
 
 ## Contributing
 
@@ -376,5 +360,6 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Frontend Documentation](🚫link to your frontend readme here) for details on the fronend of our project.
-🚫 Add DS iOS and/or Andriod links here if applicable.
+See [Frontend Documentation](https://github.com/labs15-rv-life/frontend/blob/master/README.md) for details on the frontend of our project.
+See [Data Science Documentation](https://github.com/labs15-rv-life/data-science/blob/master/README.md) for details on the Data Science of our project.
+See [iOS Documentation](https://github.com/labs15-rv-life/iOS/blob/master/README.md) for details on the iOS Swift app of our project.

@@ -17,6 +17,8 @@ Sentry.init({
 const usersRouter = require('../users/users-router.js');
 const vehicleRouter = require('../vehicles/vehicle-router.js');
 
+
+// allow cross origin access for dev server and hosted app
 let whiteList = ["https://www.rvnav.com", "http://localhost:3000"]
 let corsOptions = {
   origin: function (origin, callback) {
